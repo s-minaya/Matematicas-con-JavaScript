@@ -49,8 +49,6 @@ function calculateTriangle(side1, side2, base, height) {
   };
 }
 
-console.log(calculateTriangle(6, 6, 4, 5.5));
-
 console.log({
   triangleSide1,
   triangleSide2,
@@ -59,6 +57,53 @@ console.log({
   trianglePerimeter,
   triangleArea,
 });
+
+/* ISOSCELES TRIANGLE */
+
+/* REQUIREMENTS:
+- Given the lengths of the three sides, find the height.
+- It must be an isosceles triangle, not equilateral
+  (2 equal sides and 1 different side).*/
+
+function calculateIsoscelesTriangleHeight(side1, base) {
+  if (side1 == base) {
+    console.warn("This is not an isosceles triangle");
+  } else {
+    // h = squareRoot(side² − (base² / 4))
+    return Math.sqrt(side1 ** 2 - base ** 2 / 4); // Math.sqrt is used to calculate the square root
+  }
+}
+
+/* SCALENE TRIANGLE */
+
+/* REQUIREMENTS:
+- Given the lengths of the three sides, find the height.
+- It must be a scalene triangle (all sides must be different).
+*/
+
+function calculateScaleneTriangleHeight(side1, side2, side3, base) {
+  // Validate scalene triangle (all sides must be different)
+  if (side1 === side2 || side1 === side3 || side2 === side3) {
+    console.warn("This is not a scalene triangle");
+    return;
+  }
+
+  // Semi-perimeter
+  const semiPerimeter = (side1 + side2 + side3) / 2;
+
+  // Area using Heron's formula
+  const area = Math.sqrt(
+    semiPerimeter *
+      (semiPerimeter - side1) *
+      (semiPerimeter - side2) *
+      (semiPerimeter - side3),
+  );
+
+  // Height relative to the selected base
+  const height = (2 * area) / base;
+
+  return height;
+}
 
 console.groupEnd("Triangle");
 
