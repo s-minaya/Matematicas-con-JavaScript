@@ -79,7 +79,7 @@ couponsList.push({
   name: "SOFI_DEV",
   discount: 75,
 });
-console.group("Available Coupons");
+console.group("Cupones Disponibles");
 couponsList.forEach((coupon) => {
   console.log(`${coupon.name} → ${coupon.discount}%`);
 });
