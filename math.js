@@ -147,3 +147,11 @@ function calculateCircle(radius) {
 }
 
 console.groupEnd("Circle");
+
+/* ----------------------------------
+        PRECIOS Y DESCUENTOS
+---------------------------------- */
+
+/* P x (100 - D )
+___________________
+        100*/
