@@ -9,16 +9,57 @@
   <body>
     <main class="main">
       <h1>Cómo calcular precios con descuentos</h1>
+      <h2>Calcular precio con descuento en porcentaje</h2>
 
-      <label for="price">Precio original de tu producto:</label>
-      <input id="price" type="number" placeholder="80, 100..." />
+      <!-- Calculate final price after applying a discount percentage -->
 
-      <label for="discount">Precio original de tu producto:</label>
-      <input id="discount" type="number" placeholder="50, 25..." />
+      <label for="price-percent">Precio original de tu producto:</label>
+      <input
+        class="js_pricePercent"
+        id="price-percent"
+        type="number"
+        placeholder="Ej: 80, 100..."
+      />
 
-      <button id="calculate">Calcular descuento</button>
-      <button type="button" id="clear">Limpiar</button>
-      <p id="result"></p>
+      <label for="discount-percent">Descuento:</label>
+      <input
+        class="js_discountPercent"
+        id="discount-percent"
+        type="number"
+        placeholder="Ej: 50, 25..."
+      />
+
+      <button class="js_calculatePercent" type="button">
+        Calcular descuento
+      </button>
+      <button class="js_clearPercent" type="button">Limpiar</button>
+      <p class="js_pResultPercent"></p>
+      <br />
+
+      <!-- Calculate final price with discount coupon -->
+      <h2>Calcular precio con cupón de descuento</h2>
+
+      <label for="price-coupon">Precio original de tu producto:</label>
+      <input
+        class="js_priceCoupon"
+        id="price-coupon"
+        type="number"
+        placeholder="Ej: 80, 100..."
+      />
+
+      <label for="coupon">Cupón de descuento:</label>
+      <input
+        class="js_discountCoupon"
+        id="coupon"
+        type="text"
+        placeholder="Abre las DevTools..."
+      />
+
+      <button class="js_calculateCoupon" type="button">
+        Calcular descuento
+      </button>
+      <button class="js_clearCoupon" type="button">Limpiar</button>
+      <p class="js_pResultCoupon"></p>
     </main>
     <script src="discounts.js"></script>
   </body>
