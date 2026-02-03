@@ -160,3 +160,58 @@ function sort2DList(unsortedList, index) {
   }
   return unsortedList.sort(compareByIndex);
 }
+
+/* ----------------------------------
+       WEIGHTED AVERAGE
+---------------------------------- */
+
+/**         FORMULA
+ *
+ * [(N1*C1) + (N2*C2) + (N3*C3)]
+ * _____________________________
+ *      (C1 + C2 + C3)
+ * N = Grade
+ * C = Credit
+ */
+
+const grades = [
+  {
+    course: "Art Drawing",
+    grade: 10,
+    credit: 2,
+  },
+  {
+    course: "Programming",
+    grade: 8,
+    credit: 5,
+  },
+  {
+    course: "History",
+    grade: 7,
+    credit: 5,
+  },
+];
+
+// Multiply each grade by its credit
+const gradesWithCredit = grades.map(function (gradeObject) {
+  return gradeObject.grade * gradeObject.credit;
+});
+
+// Sum all the elements multiplied by their credits
+const sumOfGradesWithCredit = gradesWithCredit.reduce(function (sum, current) {
+  return sum + current;
+}, 0);
+
+// Sum all the credits
+const credits = grades.map(function (gradeObject) {
+  return gradeObject.credit;
+});
+
+const sumOfCredits = credits.reduce(function (sum, current) {
+  return sum + current;
+}, 0);
+
+// Divide the total weighted grades by the total credits
+const weightedAverage = sumOfGradesWithCredit / sumOfCredits;
+
+console.log(weightedAverage);
