@@ -1,10 +1,12 @@
 "use strict";
 
+const Statistics = {};
+
 /* ----------------------------------
             AVERAGE
 ---------------------------------- */
 
-function calculateAverage(list) {
+Statistics.calculateAverage = function calculateAverage(list) {
   /*-------- CALCULATE AVERAGE USING A LOOP --------*/
 
   //   let sum = 0;
@@ -30,34 +32,34 @@ function calculateAverage(list) {
   // Calculate average = sum / number of elements
   const average = sum / list.length;
   return average;
-}
+};
 
-console.log(calculateAverage([10, 22, 53, 14, 10000]));
+console.log(Statistics.calculateAverage([10, 22, 53, 14, 10000]));
 
 /* ----------------------------------
             MEDIAN
 ---------------------------------- */
 
 // Returns true if the list has an even number of elements
-function isEven(list) {
+Statistics.isEven = function isEven(list) {
   return !(list.length % 2);
-}
-console.log(isEven([1, 2, 3, 4]));
-console.log(isEven([10, 22, 53]));
+};
+console.log(Statistics.isEven([1, 2, 3, 4]));
+console.log(Statistics.isEven([10, 22, 53]));
 
 // Returns true if the list has an odd number of elements
-function isOdd(list) {
+Statistics.isOdd = function isOdd(list) {
   return !!(list.length % 2);
-}
-console.log(isOdd([1, 2, 3]));
-console.log(isOdd([1, 2, 3, 4]));
+};
+console.log(Statistics.isOdd([1, 2, 3]));
+console.log(Statistics.isOdd([1, 2, 3, 4]));
 
 /**
  * Calculates the median of a list of numbers.
  * The list is sorted before calculating the median.
  */
 
-function calculateMedian(unsortedList) {
+Statistics.calculateMedian = function calculateMedian(unsortedList) {
   const sortedList = sortList(unsortedList);
   const listIsEven = isEven(sortedList);
 
@@ -84,13 +86,13 @@ function calculateMedian(unsortedList) {
 
     return medianOddList;
   }
-}
+};
 
 /**
  * Sorts a list of numbers in ascending order.
  */
 
-function sortList(unsortedList) {
+Statistics.sortList = function sortList(unsortedList) {
   function sortList(accumulator, currentValue) {
     // if (accumulator > currentValue) {
     //   return 1;
@@ -109,13 +111,13 @@ function sortList(unsortedList) {
   }
   const sortedList = unsortedList.sort(sortList);
   return sortedList;
-}
+};
 
 /* ----------------------------------
             MODE
 ---------------------------------- */
 
-function calculateMode(list) {
+Statistics.calculateMode = function calculateMode(list) {
   const countMap = {};
   for (let i = 0; i < list.length; i++) {
     const element = list[i];
@@ -138,7 +140,7 @@ function calculateMode(list) {
   const mode = maxEntry[0];
 
   return mode;
-}
+};
 
 const list2D = [
   ["a", 1],
@@ -154,12 +156,12 @@ const list2D_2 = [
 /**
  * Sorts a 2D list by a specific column index.
  */
-function sort2DList(unsortedList, index) {
+Statistics.sort2DList = function sort2DList(unsortedList, index) {
   function compareByIndex(a, b) {
     return a[index] - b[index];
   }
   return unsortedList.sort(compareByIndex);
-}
+};
 
 /* ----------------------------------
        WEIGHTED AVERAGE
