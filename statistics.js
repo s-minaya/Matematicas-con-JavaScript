@@ -101,11 +101,62 @@ function sortList(unsortedList) {
     // }
 
     return accumulator - currentValue;
+
     // return currentValue - accumulator;
     // return 5 - 10 -> -5;
     // return 5 - 5 -> 0;
     // return 10 - 5 -> 5;
   }
-  const sortedList = unsortedList.sort((a, b) => a - b);
+  const sortedList = unsortedList.sort(sortList);
   return sortedList;
+}
+
+/* ----------------------------------
+            MODE
+---------------------------------- */
+
+function calculateMode(list) {
+  const countMap = {};
+  for (let i = 0; i < list.length; i++) {
+    const element = list[i];
+
+    if (countMap[element]) {
+      countMap[element] += 1;
+    } else {
+      countMap[element] = 1;
+    }
+  }
+
+  // Convert object to array of [element, count] pairs
+  const entriesArray = Object.entries(countMap);
+
+  // Sort array by count (second element of each pair)
+  const sortedEntries = sort2DList(entriesArray, 1);
+
+  // Take the element with the highest count
+  const maxEntry = sortedEntries[sortedEntries.length - 1];
+  const mode = maxEntry[0];
+
+  return mode;
+}
+
+const list2D = [
+  ["a", 1],
+  ["b", 2],
+  ["c", 3],
+];
+const list2D_2 = [
+  ["a", 100],
+  ["b", 20],
+  ["c", 30],
+];
+
+/**
+ * Sorts a 2D list by a specific column index.
+ */
+function sort2DList(unsortedList, index) {
+  function compareByIndex(a, b) {
+    return a[index] - b[index];
+  }
+  return unsortedList.sort(compareByIndex);
 }
