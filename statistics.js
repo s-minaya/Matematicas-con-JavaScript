@@ -52,17 +52,60 @@ function isOdd(list) {
 console.log(isOdd([1, 2, 3]));
 console.log(isOdd([1, 2, 3, 4]));
 
-function calculateMedian(list) {
-  const listIsEven = isEven(list);
+/**
+ * Calculates the median of a list of numbers.
+ * The list is sorted before calculating the median.
+ */
+
+function calculateMedian(unsortedList) {
+  const sortedList = sortList(unsortedList);
+  const listIsEven = isEven(sortedList);
+
+  // If the list has an even number of elements,
+  // the median is the average of the two middle values
 
   if (listIsEven) {
+    const firstMiddleIndex = sortedList.length / 2 - 1;
+    const secondMiddleIndex = sortedList.length / 2;
+
+    const middleValues = [];
+    middleValues.push(sortedList[firstMiddleIndex]);
+    middleValues.push(sortedList[secondMiddleIndex]);
+
+    const medianOddList = calculateAverage(middleValues);
+
+    return medianOddList;
   } else {
-    const middleIndex = Math.floor(list.length / 2);
-    const medianOddList = list[middleIndex];
+    const middleIndex = Math.floor(sortedList.length / 2);
+    const medianOddList = sortedList[middleIndex];
 
     console.log(middleIndex);
     console.log(medianOddList);
 
     return medianOddList;
   }
+}
+
+/**
+ * Sorts a list of numbers in ascending order.
+ */
+
+function sortList(unsortedList) {
+  function sortList(accumulator, currentValue) {
+    // if (accumulator > currentValue) {
+    //   return 1;
+    // } else if (accumulator === currentValue) {
+    //   return 0;
+    // } else if (accumulator < currentValue) {
+    //   return -1;
+    // }
+
+    return accumulator - currentValue;
+    // return currentValue - accumulator;
+    // return 5 - 10 -> -5;
+    // return 5 - 5 -> 0;
+    // return 10 - 5 -> 5;
+  }
+  const sortedList = unsortedList.sort((a, b) => a - b);
+  return sortedList;
 }
