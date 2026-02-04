@@ -60,8 +60,8 @@ console.log(Statistics.isOdd([1, 2, 3, 4]));
  */
 
 Statistics.calculateMedian = function calculateMedian(unsortedList) {
-  const sortedList = sortList(unsortedList);
-  const listIsEven = isEven(sortedList);
+  const sortedList = Statistics.sortList(unsortedList);
+  const listIsEven = Statistics.isEven(sortedList);
 
   // If the list has an even number of elements,
   // the median is the average of the two middle values
@@ -74,7 +74,7 @@ Statistics.calculateMedian = function calculateMedian(unsortedList) {
     middleValues.push(sortedList[firstMiddleIndex]);
     middleValues.push(sortedList[secondMiddleIndex]);
 
-    const medianOddList = calculateAverage(middleValues);
+    const medianOddList = Statistics.calculateAverage(middleValues);
 
     return medianOddList;
   } else {
