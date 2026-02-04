@@ -15,7 +15,6 @@ function medianByEmployee(employeeName) {
 
   const medianSalaries = Statistics.calculateMedian(salaries);
 
-  console.log(medianSalaries);
   return medianSalaries;
 }
 /**
@@ -127,4 +126,30 @@ function getCompanySalaryProjection(name) {
     const newMedianSalary = lastMedianSalary + increase;
     return newMedianSalary;
   }
+}
+
+// General analysis
+
+function getOverallMedian() {
+  const mediansPerEmployee = salaries.map((employee) =>
+    medianByEmployee(employee.name),
+  );
+
+  const median = Statistics.calculateMedian(mediansPerEmployee);
+  return median;
+}
+
+function getTop10EmployeeMedian() {
+  const mediansPerEmployee = salaries.map((employee) =>
+    medianByEmployee(employee.name),
+  );
+
+  const sortedMedians = Statistics.sortList(mediansPerEmployee);
+
+  const top10Count = mediansPerEmployee.length / 10;
+  const limit = mediansPerEmployee.length - top10Count;
+
+  const top10 = sortedMedians.splice(limit, sortedMedians.length);
+  const medianTop10 = Statistics.calculateMedian(top10);
+  return medianTop10;
 }
