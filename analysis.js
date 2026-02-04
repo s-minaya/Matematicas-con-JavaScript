@@ -53,3 +53,29 @@ function getEmployeeSalaryProjection(employeeName) {
 
   console.log({ newSalary });
 }
+/**
+ * Organizes all employees' salaries into a structured object by company and year.
+ * Steps:
+ * 1. Iterate over each employee in the salaries array.
+ * 2. Iterate over each job of the employee.
+ * 3. For each job, initialize the company and year in the `companies` object if needed.
+ * 4. Push the job's salary into the corresponding company and year array.
+ */
+
+const companies = {};
+
+for (const employee of salaries) {
+  for (const job of employee.jobs) {
+    if (!companies[job.company]) {
+      companies[job.company] = {};
+    }
+
+    if (!companies[job.company][job.year]) {
+      companies[job.company][job.year] = [];
+    }
+
+    companies[job.company][job.year].push(job.salary);
+  }
+}
+
+console.log(companies);
