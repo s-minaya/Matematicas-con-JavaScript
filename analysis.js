@@ -79,3 +79,14 @@ for (const employee of salaries) {
 }
 
 console.log(companies);
+
+function getMedianSalaryByCompanyAndYear(name, year) {
+  if (!companies[name]) {
+    console.warn("La empresa no existe");
+    return;
+  } else if (!companies[name][year]) {
+    console.warn("La empresa no dió salarios ese año");
+  } else {
+    return Statistics.calculateMedian(companies[name][year]);
+  }
+}
