@@ -45,7 +45,6 @@ function getEmployeeSalaryProjection(employeeName) {
   console.log({ growthPercentages, medianGrowthPercentages });
 
   const lastSalary = jobs[jobs.length - 1].salary;
-
   const increase = lastSalary * medianGrowthPercentages;
   const newSalary = lastSalary + increase;
 
@@ -88,5 +87,44 @@ function getMedianSalaryByCompanyAndYear(name, year) {
     console.warn("La empresa no dió salarios ese año");
   } else {
     return Statistics.calculateMedian(companies[name][year]);
+  }
+}
+
+/**
+ * Calculates the projected median salary for a company based on historical median salaries per year.
+ *
+ * Steps:
+ * 1. Retrieves all years for which the company has salary data.
+ * 2. Calculates the median salary for each year using getMedianSalaryByCompanyAndYear().
+ * 3. Computes the year-over-year growth percentages from the yearly medians.
+ * 4. Finds the median of these growth percentages.
+ * 5. Applies the median growth to the last year's median salary to estimate the projected median salary.
+ */
+
+function getCompanySalaryProjection(name) {
+  if (!companies[name]) {
+    console.warn("La empresa no existe");
+  } else {
+    const companyYears = Object.keys(companies[name]);
+    const yearlyMedianSalaries = companyYears.map((year) => {
+      return getMedianSalaryByCompanyAndYear(name, year);
+    });
+    let growthPercentages = [];
+
+    for (let i = 1; i < yearlyMedianSalaries.length; i++) {
+      const currentSalary = yearlyMedianSalaries[i];
+      const previousSalary = yearlyMedianSalaries[i - 1];
+      const growth = currentSalary - previousSalary;
+      const growthPercentage = growth / previousSalary;
+
+      growthPercentages.push(growthPercentage);
+    }
+    const medianGrowthPercentages =
+      Statistics.calculateMedian(growthPercentages);
+    const lastMedianSalary =
+      yearlyMedianSalaries[yearlyMedianSalaries.length - 1];
+    const increase = lastMedianSalary * medianGrowthPercentages;
+    const newMedianSalary = lastMedianSalary + increase;
+    return newMedianSalary;
   }
 }
