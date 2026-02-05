@@ -1,0 +1,61 @@
+@use "../base/variables" as v;
+
+.calc-form {
+  margin-bottom: v.$spacing-lg;
+}
+
+.input-group {
+  margin-bottom: v.$spacing-md;
+
+  &__label {
+    display: block;
+    font-size: 1.4rem;
+    color: v.$color-text-secondary;
+    margin-bottom: v.$spacing-xs;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+  }
+
+  &__field {
+    width: 100%;
+    padding: v.$spacing-md;
+    background: v.$color-bg-input;
+    border: 0.2rem solid v.$color-border;
+    border-radius: v.$border-radius-sm;
+    color: v.$color-text-primary;
+    font-size: 1.6rem;
+    transition: all v.$transition-fast;
+
+    &::placeholder {
+      color: v.$color-text-muted;
+    }
+    &:focus {
+      outline: none;
+      border-color: v.$color-primary;
+      box-shadow: 0 0 0 0.3rem rgba(0, 255, 204, 0.1);
+    }
+    &:hover {
+      border-color: v.$color-border-active;
+    }
+  }
+}
+
+/* Tablet */
+@media (min-width: 600px) {
+  .calc-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: v.$spacing-md;
+  }
+
+  .calc-form .btn {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Laptop */
+@media (min-width: 1024px) {
+  .calc-form {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

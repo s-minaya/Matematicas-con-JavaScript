@@ -1,0 +1,85 @@
+@use "../base/variables" as v;
+
+.footer {
+  margin-top: v.$spacing-xl;
+  padding-top: v.$spacing-md;
+  border-top: 0.2rem solid v.$color-border;
+  text-align: center;
+  position: relative;
+  padding-bottom: v.$spacing-md;
+
+  &__text {
+    font-size: 1.2rem;
+    color: v.$color-text-muted;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+  }
+
+  &__arrow {
+    display: inline-block;
+    margin-bottom: v.$spacing-md;
+    transition: all v.$transition-fast;
+    animation: bounce 1.8s infinite ease-in-out;
+
+    &:hover {
+      transform: translateY(-0.4rem);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+.arrow-img {
+  width: 4rem;
+  height: 4rem;
+  opacity: 0.9;
+  transition: all v.$transition-fast;
+  filter: drop-shadow(0 0 0.4rem rgba(0, 255, 204, 0.5));
+
+  &:hover {
+    opacity: 1;
+    filter: drop-shadow(0 0 1rem rgba(0, 255, 204, 0.8));
+    transform: translateY(-0.2rem);
+  }
+}
+
+/* Mobile */
+@media (max-width: 414px) {
+  .arrow-img {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+}
+
+/* Tablet */
+@media (min-width: 600px) and (max-width: 1023px) {
+  .arrow-img {
+    width: 5rem;
+    height: 5rem;
+  }
+}
+
+/* Laptop */
+@media (min-width: 1024px) {
+  .footer__text {
+    font-size: 1.4rem;
+  }
+
+  .arrow-img {
+    width: 5.2rem;
+    height: 5.2rem;
+  }
+}
+@keyframes bounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}

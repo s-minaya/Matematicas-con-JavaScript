@@ -1,0 +1,81 @@
+@use "../base/variables" as v;
+
+.nav-menu {
+  background: v.$color-bg-card;
+  border: 0.2rem solid v.$color-border;
+  border-radius: v.$border-radius-md;
+  padding: v.$spacing-lg;
+  box-shadow: v.$shadow-md;
+
+  &__title {
+    font-size: 2.4rem;
+    color: v.$color-primary;
+    margin-bottom: v.$spacing-md;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: v.$spacing-sm;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: v.$spacing-sm;
+    padding: v.$spacing-md;
+    background: v.$color-bg-input;
+    border: 0.2rem solid v.$color-border;
+    border-radius: v.$border-radius-sm;
+    transition: all v.$transition-normal;
+    font-size: 1.8rem;
+
+    &:hover {
+      border-color: v.$color-primary;
+      background: rgba(0, 255, 204, 0.05);
+      transform: translateX(0.8rem);
+      box-shadow: -0.4rem 0 0 v.$color-primary;
+    }
+  }
+
+  &__icon {
+    font-size: 2.4rem;
+    color: v.$color-accent;
+    font-weight: bold;
+    min-width: 3rem;
+    text-align: center;
+  }
+
+  &__text {
+    flex: 1;
+  }
+}
+
+/* Tablet */
+@media (min-width: 600px) {
+  .nav-menu {
+    &__list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: v.$spacing-md;
+    }
+  }
+}
+
+/* Laptop */
+@media (min-width: 1024px) {
+  .nav-menu {
+    padding: v.$spacing-xl;
+
+    &__title {
+      font-size: 3.2rem;
+    }
+
+    &__link {
+      font-size: 2rem;
+      padding: v.$spacing-lg;
+    }
+  }
+}

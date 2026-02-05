@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Geometría Básica - Math Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/project/scss/main.scss" />
+    <link rel="icon" href="/images/favicon.png" />
+  </head>
+  <body style="scroll-behavior: smooth">
+    <div class="page-wrapper">
+      <header class="header" id="header">
+        <h1 class="header__title">
+          <span class="header__title-math">MATH</span>
+          <span class="header__title-lab">LAB</span>
+        </h1>
+        <p class="header__subtitle">Geometría Básica</p>
+      </header>
+
+      <nav class="breadcrumb">
+        <a href="../../index.html" class="breadcrumb__link">← Volver al menú</a>
+      </nav>
+
+      <main class="main">
+        <!-- SQUARE -->
+        <section class="calculator-card">
+          <div class="calculator-card__header">
+            <h2 class="calculator-card__title">Cuadrado</h2>
+          </div>
+
+          <div class="calculator-card__content">
+            <div class="info-box">
+              <h3 class="info-box__title">¿Qué es un cuadrado?</h3>
+              <p class="info-box__text">
+                Un cuadrado es un polígono de 4 lados iguales y 4 ángulos rectos
+                (90°).
+              </p>
+              <div class="formula-group">
+                <div class="formula">
+                  <span class="formula__label">Perímetro:</span>
+                  <span class="formula__expression">P = lado × 4</span>
+                </div>
+                <div class="formula">
+                  <span class="formula__label">Área:</span>
+                  <span class="formula__expression">A = lado²</span>
+                </div>
+              </div>
+            </div>
+            <div class="info-box">
+              <p class="info-box__text">
+                Introduce la longitud del lado en centímetros para calcular el
+                perímetro y el área.
+              </p>
+            </div>
+
+            <form class="calc-form" id="squareForm">
+              <div class="input-group">
+                <label for="squareSide" class="input-group__label">
+                  Longitud del lado (cm)
+                </label>
+                <input
+                  type="number"
+                  id="squareSide"
+                  class="input-group__field"
+                  placeholder="Ej: 5"
+                  step="0.01"
+                  min="0"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn--primary">Calcular</button>
+              <button type="reset" class="btn btn--reset">Reiniciar</button>
+            </form>
+
+            <div class="results" id="squareResults"></div>
+          </div>
+        </section>
+
+        <!-- TRIANGLE -->
+        <section class="calculator-card">
+          <div class="calculator-card__header">
+            <h2 class="calculator-card__title">Triángulo</h2>
+          </div>
+
+          <div class="calculator-card__content">
+            <div class="info-box">
+              <h3 class="info-box__title">¿Qué es un triángulo?</h3>
+              <p class="info-box__text">
+                Un triángulo es un polígono de 3 lados. Para calcular su área
+                necesitas la base y la altura.
+              </p>
+              <div class="formula-group">
+                <div class="formula">
+                  <span class="formula__label">Perímetro:</span>
+                  <span class="formula__expression"
+                    >P = lado1 + lado2 + base</span
+                  >
+                </div>
+                <div class="formula">
+                  <span class="formula__label">Área:</span>
+                  <span class="formula__expression"
+                    >A = (base × altura) / 2</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <form class="calc-form" id="triangleForm">
+              <div class="input-group">
+                <label for="triangleSide1" class="input-group__label"
+                  >Lado 1</label
+                >
+                <input
+                  type="number"
+                  id="triangleSide1"
+                  class="input-group__field"
+                  placeholder="Ej: 6"
+                  step="0.01"
+                  min="0"
+                  required
+                />
+              </div>
+              <div class="input-group">
+                <label for="triangleSide2" class="input-group__label"
+                  >Lado 2</label
+                >
+                <input
+                  type="number"
+                  id="triangleSide2"
+                  class="input-group__field"
+                  placeholder="Ej: 6"
+                  step="0.01"
+                  min="0"
+                  required
+                />
+              </div>
+              <div class="input-group">
+                <label for="triangleBase" class="input-group__label"
+                  >Base</label
+                >
+                <input
+                  type="number"
+                  id="triangleBase"
+                  class="input-group__field"
+                  placeholder="Ej: 4"
+                  step="0.01"
+                  min="0"
+                  required
+                />
+              </div>
+              <div class="input-group">
+                <label for="triangleHeight" class="input-group__label"
+                  >Altura</label
+                >
+                <input
+                  type="number"
+                  id="triangleHeight"
+                  class="input-group__field"
+                  placeholder="Ej: 5.5"
+                  step="0.01"
+                  min="0"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn--primary">Calcular</button>
+              <button type="reset" class="btn btn--reset">Reiniciar</button>
+            </form>
+
+            <div class="results" id="triangleResults"></div>
+          </div>
+        </section>
+
+        <!-- ISOSCELES TRIANGLE -->
+        <section class="calculator-card">
+          <div class="calculator-card__header">
+            <h2 class="calculator-card__title">Triángulo Isósceles (Altura)</h2>
+          </div>
+
+          <div class="calculator-card__content">
+            <div class="info-box">
+              <h3 class="info-box__title">Triángulo Isósceles</h3>
+              <p class="info-box__text">
+                Un triángulo isósceles tiene 2 lados iguales y 1 diferente.
+                Podemos calcular su altura con los lados.
+              </p>
+              <div class="formula-group">
+                <div class="formula">
+                  <span class="formula__label">Altura:</span>
+                  <span class="formula__expression"
+                    >h = √(lado² − base²/4)</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <form class="calc-form" id="isoscelesForm">
+              <div class="input-group">
+                <label for="isoscelesSide" class="input-group__label">
+                  Lado igual (los 2 lados iguales)
+                </label>
+                <input
+                  type="number"
+                  id="isoscelesSide"
+                  class="input-group__field"
+                  placeholder="Ej: 6"
+                  step="0.01"
+                  min="0"
+                  required
+                />
+              </div>
+              <div class="input-group">
+                <label for="isoscelesBase" class="input-group__label">
+                  Base (lado diferente)
+                </label>
+                <input
+                  type="number"
+                  id="isoscelesBase"
+                  class="input-group__field"
+                  placeholder="Ej: 4"
+                  step="0.01"
+                  min="0"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn--primary">
+                Calcular Altura
+              </button>
+              <button type="reset" class="btn btn--reset">Reiniciar</button>
+            </form>
+
+            <div class="results" id="isoscelesResults"></div>
+          </div>
+        </section>
+
+        <!-- SCALENE TRIANGLE -->
+        <section class="calculator-card">
+          <div class="calculator-card__header">
+            <h2 class="calculator-card__title">Triángulo Escaleno (Altura)</h2>
+          </div>
+
+          <div class="calculator-card__content">
+            <div class="info-box">
+              <h3 class="info-box__title">Triángulo Escaleno</h3>
+              <p class="info-box__text">
+                Un triángulo escaleno tiene todos sus lados diferentes. Usamos
+                la fórmula de Herón para calcular el área y luego la altura.
+              </p>
+              <div class="formula-group">
+                <div class="formula">
+                  <span class="formula__label">Semiperímetro:</span>
+                  <span class="formula__expression">s = (a + b + c) / 2</span>
+                </div>
+                <div class="formula">
+                  <span class="formula__label">Área (Herón):</span>
+                  <span class="formula__expression"
+                    >A = √[s(s-a)(s-b)(s-c)]</span
+                  >
+                </div>
+                <div class="formula">
+                  <span class="formula__label">Altura:</span>
+                  <span class="formula__expression">h = (2 × A) / base</span>
+                </div>
+              </div>
+            </div>
+
+            <form class="calc-form" id="scaleneForm">
+              <div class="input-group">
+                <label for="scaleneSide1" class="input-group__label"
+                  >Lado 1</label
+                >
+                <input
+                  type="number"
+                  id="scaleneSide1"
+                  class="input-group__field"
+                  placeholder="Ej: 5"
+                  step="0.01"
+                  min="0"
+                  required
+                />
+              </div>
+              <div class="input-group">
+                <label for="scaleneSide2" class="input-group__label"
+                  >Lado 2</label
+                >
+                <input
+                  type="number"
+                  id="scaleneSide2"
+                  class="input-group__field"
+                  placeholder="Ej: 6"
+                  step="0.01"
+                  min="0"
+                  required
+                />
+              </div>
+              <div class="input-group">
+                <label for="scaleneSide3" class="input-group__label"
+                  >Lado 3</label
+                >
+                <input
+                  type="number"
+                  id="scaleneSide3"
+                  class="input-group__field"
+                  placeholder="Ej: 7"
+                  step="0.01"
+                  min="0"
+                  required
+                />
+              </div>
+              <div class="input-group">
+                <label for="scaleneBase" class="input-group__label">
+                  Base (elige uno de los 3 lados)
+                </label>
+                <input
+                  type="number"
+                  id="scaleneBase"
+                  class="input-group__field"
+                  placeholder="Ej: 5"
+                  step="0.01"
+                  min="0"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn--primary">
+                Calcular Altura
+              </button>
+              <button type="reset" class="btn btn--reset">Reiniciar</button>
+            </form>
+
+            <div class="results" id="scaleneResults"></div>
+          </div>
+        </section>
+
+        <!-- CIRCLE -->
+        <section class="calculator-card">
+          <div class="calculator-card__header">
+            <h2 class="calculator-card__title">Círculo</h2>
+          </div>
+
+          <div class="calculator-card__content">
+            <div class="info-box">
+              <h3 class="info-box__title">¿Qué es un círculo?</h3>
+              <p class="info-box__text">
+                Un círculo es el conjunto de puntos equidistantes de un centro.
+                El radio es la distancia del centro al borde.
+              </p>
+              <div class="formula-group">
+                <div class="formula">
+                  <span class="formula__label">Diámetro:</span>
+                  <span class="formula__expression">d = radio × 2</span>
+                </div>
+                <div class="formula">
+                  <span class="formula__label">Circunferencia:</span>
+                  <span class="formula__expression">C = diámetro × π</span>
+                </div>
+                <div class="formula">
+                  <span class="formula__label">Área:</span>
+                  <span class="formula__expression">A = radio² × π</span>
+                </div>
+              </div>
+            </div>
+
+            <form class="calc-form" id="circleForm">
+              <div class="input-group">
+                <label for="circleRadius" class="input-group__label">
+                  Radio del círculo
+                </label>
+                <input
+                  type="number"
+                  id="circleRadius"
+                  class="input-group__field"
+                  placeholder="Ej: 3"
+                  step="0.01"
+                  min="0"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn--primary">Calcular</button>
+              <button type="reset" class="btn btn--reset">Reiniciar</button>
+            </form>
+
+            <div class="results" id="circleResults"></div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <a class="footer__arrow" href="#header"
+          ><img
+            class="arrow-img"
+            src="/images/arrow-up.png"
+            alt="Volver arriba"
+        /></a>
+        <p class="footer__text">Math Lab - Geometría Básica</p>
+      </footer>
+    </div>
+
+    <script src="../js/geometry.js"></script>
+  </body>
+</html>

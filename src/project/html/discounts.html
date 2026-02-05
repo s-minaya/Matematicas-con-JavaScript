@@ -3,10 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css" />
     <title>Cómo calcular precios con descuentos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/project/scss/main.scss" />
+    <link rel="icon" href="/images/favicon.png" />
   </head>
   <body>
+    <nav class="breadcrumb">
+      <a href="../../index.html" class="breadcrumb__link">← Volver al menú</a>
+    </nav>
     <main class="main">
       <h1>Cómo calcular precios con descuentos</h1>
       <h2>Calcular precio con descuento en porcentaje</h2>
@@ -29,10 +39,12 @@
         placeholder="Ej: 50, 25..."
       />
 
-      <button class="js_calculatePercent" type="button">
+      <button class="js_calculatePercent btn btn--primary" type="button">
         Calcular descuento
       </button>
-      <button class="js_clearPercent" type="button">Limpiar</button>
+      <button class="js_clearPercent btn btn--reset" type="button">
+        Reiniciar
+      </button>
       <p class="js_pResultPercent"></p>
       <br />
 
@@ -55,10 +67,12 @@
         placeholder="Abre las DevTools..."
       />
 
-      <button class="js_calculateCoupon" type="button">
+      <button class="js_calculateCoupon btn btn--primary" type="button">
         Calcular descuento
       </button>
-      <button class="js_clearCoupon" type="button">Limpiar</button>
+      <button class="js_clearCoupon btn btn--reset" type="button">
+        Reiniciar
+      </button>
       <p class="js_pResultCoupon"></p>
     </main>
     <script src="discounts.js"></script>

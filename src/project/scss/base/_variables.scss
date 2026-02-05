@@ -1,0 +1,44 @@
+
+  /* Main colors */
+  $color-primary: #00ffcc;
+  $color-primary-dark: #00cc99;
+  $color-secondary: #ff006e;
+  $color-accent: #ffbe0b;
+  
+  /* Backgrounds */
+  $color-bg-dark: #0a0e27;
+  $color-bg-card: #1a1f3a;
+  $color-bg-input: #0f1429;
+  
+  /* Text */
+  $color-text-primary: #e0e0e0;
+  $color-text-secondary: #a0a0a0;
+  $color-text-muted: #606060;
+  
+  /* Borders and shadows */
+  $color-border: #2a3f5f;
+  $color-border-active: var(--color-primary);
+  
+  /* Spacing */
+  $spacing-xs: 0.8rem;
+  $spacing-sm: 1.6rem;
+  $spacing-md: 2.4rem;
+  $spacing-lg: 3.2rem;
+  $spacing-xl: 4.8rem;
+  
+  /* Borders */
+  $border-radius-sm: 0.4rem;
+  $border-radius-md: 0.8rem;
+  
+  /* Transitions */
+  $transition-fast: 0.2s ease;
+  $transition-normal: 0.3s ease;
+  
+  /* Shadows */
+  $shadow-sm: 0 0.2rem 0.8rem rgba(0, 0, 0, 0.3);
+  $shadow-md: 0 0.4rem 1.6rem rgba(0, 0, 0, 0.4);
+  $shadow-glow: 0 0 2rem rgba(0, 255, 204, 0.3);
+  
+  /* Container */
+  $container-max-width: 120rem;
+

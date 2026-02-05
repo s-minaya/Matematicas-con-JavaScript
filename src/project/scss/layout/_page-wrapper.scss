@@ -1,0 +1,27 @@
+.page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-md);
+}
+
+.main {
+  flex: 1;
+  max-width: var(--container-max-width);
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Mobile */
+@media (max-width: 414px) {
+  .page-wrapper {
+    padding: var(--spacing-sm);
+  }
+}
+
+/* Laptop */
+@media (min-width: 1024px) {
+  .page-wrapper {
+    padding: var(--spacing-lg);
+  }
+}

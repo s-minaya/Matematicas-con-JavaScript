@@ -1,0 +1,23 @@
+@use "../base/variables" as v;
+
+.breadcrumb {
+  margin-bottom: v.$spacing-md;
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: v.$spacing-xs;
+    padding: v.$spacing-sm v.$spacing-md;
+    background: v.$color-bg-card;
+    border: 0.2rem solid v.$color-border;
+    border-radius: v.$border-radius-sm;
+    font-size: 1.4rem;
+    color: v.$color-text-secondary;
+    transition: all v.$transition-fast;
+
+    &:hover {
+      color: v.$color-primary;
+      border-color: v.$color-primary;
+    }
+  }
+}

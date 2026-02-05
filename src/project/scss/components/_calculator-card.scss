@@ -1,0 +1,51 @@
+@use "../base/variables" as v;
+
+.calculator-card {
+  background: v.$color-bg-card;
+  border: 0.2rem solid v.$color-border;
+  border-radius: v.$border-radius-md;
+  margin-bottom: v.$spacing-lg;
+  overflow: hidden;
+  box-shadow: v.$shadow-md;
+  transition: transform v.$transition-normal;
+
+  &:hover {
+    transform: translateY(-0.4rem);
+    border-color: v.$color-primary;
+  }
+
+  &__header {
+    background: rgba(0, 255, 204, 0.1);
+    border-bottom: 0.2rem solid v.$color-border;
+    padding: v.$spacing-md;
+  }
+
+  &__title {
+    font-size: 2.4rem;
+    color: v.$color-primary;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+  }
+
+  &__content {
+    padding: v.$spacing-lg;
+  }
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .calculator-card {
+    &__title {
+      font-size: 2.8rem;
+    }
+  }
+}
+
+/* Laptop */
+@media (min-width: 1024px) {
+  .calculator-card {
+    &__content {
+      padding: v.$spacing-xl;
+    }
+  }
+}

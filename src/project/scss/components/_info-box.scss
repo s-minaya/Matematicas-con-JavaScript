@@ -1,0 +1,60 @@
+@use "../base/variables" as v;
+
+.info-box {
+  background: rgba(255, 190, 11, 0.05);
+  border-left: 0.4rem solid v.$color-accent;
+  padding: v.$spacing-md;
+  margin-bottom: v.$spacing-lg;
+  border-radius: v.$border-radius-sm;
+
+  &__title {
+    font-size: 1.8rem;
+    color: v.$color-accent;
+    margin-bottom: v.$spacing-sm;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+  }
+
+  &__text {
+    font-size: 1.4rem;
+    color: v.$color-text-secondary;
+    line-height: 1.8;
+    margin-bottom: v.$spacing-md;
+  }
+}
+
+.formula-group {
+  display: flex;
+  flex-direction: column;
+  gap: v.$spacing-sm;
+}
+
+.formula {
+  display: flex;
+  align-items: baseline;
+  gap: v.$spacing-sm;
+  padding: v.$spacing-sm;
+  background: v.$color-bg-input;
+  border-radius: v.$border-radius-sm;
+  font-family: "Courier New", monospace;
+
+  &__label {
+    font-size: 1.4rem;
+    color: v.$color-text-secondary;
+    min-width: 10rem;
+  }
+
+  &__expression {
+    font-size: 1.6rem;
+    color: v.$color-primary;
+    font-weight: bold;
+  }
+}
+
+/* Tablet */
+@media (min-width: 600px) {
+  .formula-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  }
+}

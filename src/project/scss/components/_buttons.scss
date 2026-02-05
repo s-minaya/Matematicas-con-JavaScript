@@ -1,0 +1,58 @@
+@use "../base/variables" as v;
+
+.btn {
+  display: inline-block;
+  padding: v.$spacing-md v.$spacing-lg;
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  border-radius: v.$border-radius-sm;
+  transition: all v.$transition-fast;
+  border: 0.2rem solid transparent;
+  font-family: "Jersey 10", Courier, monospace;
+  min-width: 30rem;
+}
+
+.btn--primary {
+  background: v.$color-primary;
+  color: v.$color-bg-dark;
+  border-color: v.$color-primary;
+
+  &:hover {
+    background: transparent;
+    color: v.$color-primary;
+    box-shadow: v.$shadow-glow;
+    transform: translateY(-0.2rem);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.btn--reset {
+  background: v.$color-secondary;
+  color: v.$color-bg-dark;
+  border-color: v.$color-secondary;
+
+  &:hover {
+    background: transparent;
+    color: v.$color-secondary;
+    box-shadow: v.$shadow-glow;
+    transform: translateY(-0.2rem);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+/* Mobile  */
+@media (max-width: 414px) {
+  .btn {
+    width: 100%;
+    padding: v.$spacing-sm v.$spacing-md;
+    font-size: 1.8rem;
+  }
+}
