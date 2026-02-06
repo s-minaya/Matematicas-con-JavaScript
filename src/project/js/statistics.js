@@ -420,3 +420,6 @@ function parseNumberList(inputString) {
 
   return numberArray;
 }
+
+// Export para que otros módulos puedan importar
+export { Statistics };

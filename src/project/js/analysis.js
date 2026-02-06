@@ -1,5 +1,12 @@
 "use strict";
 
+// Import dependencies
+import { salaries as importedSalaries } from "./salaries.js";
+import { Statistics } from "./statistics.js";
+
+// Make salaries available in this module
+let salaries = importedSalaries;
+
 // Personal analysis
 
 function findEmployee(employeeToFind) {

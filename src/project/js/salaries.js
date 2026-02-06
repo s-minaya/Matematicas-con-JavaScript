@@ -254,3 +254,6 @@ Array.from(availableCompanies)
     console.log(company);
   });
 console.groupEnd();
+
+// Export para que otros módulos puedan importar
+export { salaries };
