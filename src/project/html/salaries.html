@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fórmulas básicas de geometría</title>
+    <title>Análisis Salarial - Math Lab</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,16 +13,417 @@
     <link rel="stylesheet" href="/project/scss/main.scss" />
     <link rel="icon" href="/images/favicon.png" />
   </head>
-  <body>
-    <nav class="breadcrumb">
-      <a href="../../index.html" class="breadcrumb__link">← Volver al menú</a>
-    </nav>
-    <main class="main">
-      <h1>Taller de Matemáticas con JavaScript</h1>
-      <p>Abre las DevTools...</p>
-    </main>
-    <script src="./statistics.js"></script>
-    <script src="./salaries.js"></script>
-    <script src="./analysis.js"></script>
+
+  <body style="scroll-behavior: smooth">
+    <div class="page-wrapper">
+      <header class="header" id="header">
+        <h1 class="header__title">
+          <span class="header__title-math">MATH</span>
+          <span class="header__title-lab">LAB</span>
+        </h1>
+        <p class="header__subtitle">Análisis Salarial</p>
+      </header>
+
+      <nav class="breadcrumb">
+        <a href="../../index.html" class="breadcrumb__link">← Volver al menú</a>
+      </nav>
+
+      <main class="main">
+        <!-- ADD EMPLOYEE -->
+        <section class="calculator-card">
+          <div class="calculator-card__header">
+            <h2 class="calculator-card__title">Añadir Empleado</h2>
+          </div>
+
+          <div class="calculator-card__content">
+            <div class="info-box">
+              <h3 class="info-box__title">¿Cómo funciona?</h3>
+              <p class="info-box__text">
+                Añade un empleado con su historial salarial. Introduce los años,
+                empresas y salarios separados por comas. Luego podrás usar estos
+                datos en los análisis. También puedes usar los empleados
+                predefinidos (abre las DevTools para verlos). 😉
+              </p>
+            </div>
+
+            <form class="calc-form" id="addEmployeeForm">
+              <div class="input-group">
+                <label for="employee-name" class="input-group__label">
+                  Nombre del empleado
+                </label>
+                <input
+                  type="text"
+                  id="employee-name"
+                  class="input-group__field js_employeeName"
+                  placeholder="Ej: María García"
+                  required
+                />
+              </div>
+              <div class="input-group">
+                <label for="employee-years" class="input-group__label">
+                  Años (separados por comas)
+                </label>
+                <input
+                  type="text"
+                  id="employee-years"
+                  class="input-group__field js_employeeYears"
+                  placeholder="Ej: 2020, 2021, 2022, 2023"
+                  required
+                />
+              </div>
+              <div class="input-group">
+                <label for="employee-companies" class="input-group__label">
+                  Empresas (separadas por comas)
+                </label>
+                <input
+                  type="text"
+                  id="employee-companies"
+                  class="input-group__field js_employeeCompanies"
+                  placeholder="Ej: Freelance, Freelance, TechCorp, TechCorp"
+                  required
+                />
+              </div>
+              <div class="input-group">
+                <label for="employee-salaries" class="input-group__label">
+                  Salarios (separados por comas)
+                </label>
+                <input
+                  type="text"
+                  id="employee-salaries"
+                  class="input-group__field js_employeeSalaries"
+                  placeholder="Ej: 500, 600, 1000, 1200"
+                  required
+                />
+              </div>
+              <div class="btn-group">
+                <button type="button" class="btn btn--primary js_addEmployee">
+                  Añadir Empleado
+                </button>
+                <button
+                  type="button"
+                  class="btn btn--reset js_clearAddEmployee"
+                >
+                  Reiniciar
+                </button>
+              </div>
+            </form>
+
+            <div class="results" id="addEmployeeResults">
+              <p class="result-message js_pResultAddEmployee"></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- EMPLOYEE MEDIAN -->
+        <section class="calculator-card">
+          <div class="calculator-card__header">
+            <h2 class="calculator-card__title">
+              Mediana Salarial por Empleado
+            </h2>
+          </div>
+
+          <div class="calculator-card__content">
+            <div class="info-box">
+              <h3 class="info-box__title">¿Qué calcula?</h3>
+              <p class="info-box__text">
+                Calcula la mediana de los salarios históricos de un empleado
+                específico. Es útil para ver un valor representativo del salario
+                de una persona a lo largo del tiempo.
+              </p>
+            </div>
+
+            <form class="calc-form" id="employeeMedianForm">
+              <div class="input-group">
+                <label for="median-employee" class="input-group__label">
+                  Nombre del empleado
+                </label>
+                <input
+                  type="text"
+                  id="median-employee"
+                  class="input-group__field js_medianEmployee"
+                  placeholder="Ej: Juanita"
+                  required
+                />
+              </div>
+              <div class="btn-group">
+                <button
+                  type="button"
+                  class="btn btn--primary js_calculateEmployeeMedian"
+                >
+                  Calcular Mediana
+                </button>
+                <button
+                  type="button"
+                  class="btn btn--reset js_clearEmployeeMedian"
+                >
+                  Reiniciar
+                </button>
+              </div>
+            </form>
+
+            <div class="results" id="employeeMedianResults">
+              <p class="result-message js_pResultEmployeeMedian"></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- EMPLOYEE PROJECTION -->
+        <section class="calculator-card">
+          <div class="calculator-card__header">
+            <h2 class="calculator-card__title">
+              Proyección Salarial del Empleado
+            </h2>
+          </div>
+
+          <div class="calculator-card__content">
+            <div class="info-box">
+              <h3 class="info-box__title">¿Qué calcula?</h3>
+              <p class="info-box__text">
+                Proyecta el salario futuro de un empleado basándose en el
+                crecimiento histórico. Calcula la mediana de los porcentajes de
+                crecimiento año tras año y la aplica al último salario.
+              </p>
+              <div class="formula-group">
+                <div class="formula">
+                  <span class="formula__label">Fórmula:</span>
+                  <span class="formula__expression"
+                    >Último salario + (Último salario × Mediana de
+                    crecimientos)</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <form class="calc-form" id="employeeProjectionForm">
+              <div class="input-group">
+                <label for="projection-employee" class="input-group__label">
+                  Nombre del empleado
+                </label>
+                <input
+                  type="text"
+                  id="projection-employee"
+                  class="input-group__field js_projectionEmployee"
+                  placeholder="Ej: Juanita"
+                  required
+                />
+              </div>
+              <div class="btn-group">
+                <button
+                  type="button"
+                  class="btn btn--primary js_calculateEmployeeProjection"
+                >
+                  Calcular Proyección
+                </button>
+                <button
+                  type="button"
+                  class="btn btn--reset js_clearEmployeeProjection"
+                >
+                  Reiniciar
+                </button>
+              </div>
+            </form>
+
+            <div class="results" id="employeeProjectionResults">
+              <p class="result-message js_pResultEmployeeProjection"></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- COMPANY MEDIAN BY YEAR -->
+        <section class="calculator-card">
+          <div class="calculator-card__header">
+            <h2 class="calculator-card__title">
+              Mediana Salarial por Empresa y Año
+            </h2>
+          </div>
+
+          <div class="calculator-card__content">
+            <div class="info-box">
+              <h3 class="info-box__title">¿Qué calcula?</h3>
+              <p class="info-box__text">
+                Calcula la mediana de los salarios pagados por una empresa
+                específica en un año concreto. Útil para comparar salarios entre
+                años o empresas.
+              </p>
+            </div>
+
+            <form class="calc-form" id="companyMedianForm">
+              <div class="input-group">
+                <label for="company-name" class="input-group__label">
+                  Nombre de la empresa
+                </label>
+                <input
+                  type="text"
+                  id="company-name"
+                  class="input-group__field js_companyName"
+                  placeholder="Ej: Mokepon Industries"
+                  required
+                />
+              </div>
+              <div class="input-group">
+                <label for="company-year" class="input-group__label">
+                  Año
+                </label>
+                <input
+                  type="number"
+                  id="company-year"
+                  class="input-group__field js_companyYear"
+                  placeholder="Ej: 2023"
+                  min="2000"
+                  max="2100"
+                  required
+                />
+              </div>
+              <div class="btn-group">
+                <button
+                  type="button"
+                  class="btn btn--primary js_calculateCompanyMedian"
+                >
+                  Calcular Mediana
+                </button>
+                <button
+                  type="button"
+                  class="btn btn--reset js_clearCompanyMedian"
+                >
+                  Reiniciar
+                </button>
+              </div>
+            </form>
+
+            <div class="results" id="companyMedianResults">
+              <p class="result-message js_pResultCompanyMedian"></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- COMPANY PROJECTION -->
+        <section class="calculator-card">
+          <div class="calculator-card__header">
+            <h2 class="calculator-card__title">
+              Proyección Salarial de Empresa
+            </h2>
+          </div>
+
+          <div class="calculator-card__content">
+            <div class="info-box">
+              <h3 class="info-box__title">¿Qué calcula?</h3>
+              <p class="info-box__text">
+                Proyecta la mediana salarial futura de una empresa basándose en
+                el crecimiento histórico de las medianas anuales. Similar a la
+                proyección individual, pero a nivel empresa.
+              </p>
+            </div>
+
+            <form class="calc-form" id="companyProjectionForm">
+              <div class="input-group">
+                <label for="projection-company" class="input-group__label">
+                  Nombre de la empresa
+                </label>
+                <input
+                  type="text"
+                  id="projection-company"
+                  class="input-group__field js_projectionCompany"
+                  placeholder="Ej: Mokepon Industries"
+                  required
+                />
+              </div>
+              <div class="btn-group">
+                <button
+                  type="button"
+                  class="btn btn--primary js_calculateCompanyProjection"
+                >
+                  Calcular Proyección
+                </button>
+                <button
+                  type="button"
+                  class="btn btn--reset js_clearCompanyProjection"
+                >
+                  Reiniciar
+                </button>
+              </div>
+            </form>
+
+            <div class="results" id="companyProjectionResults">
+              <p class="result-message js_pResultCompanyProjection"></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- OVERALL MEDIAN -->
+        <section class="calculator-card">
+          <div class="calculator-card__header">
+            <h2 class="calculator-card__title">Mediana General</h2>
+          </div>
+
+          <div class="calculator-card__content">
+            <div class="info-box">
+              <h3 class="info-box__title">¿Qué calcula?</h3>
+              <p class="info-box__text">
+                Calcula la mediana general de todos los empleados. Primero
+                obtiene la mediana de cada empleado y luego calcula la mediana
+                de todas esas medianas.
+              </p>
+            </div>
+
+            <div class="btn-group">
+              <button
+                type="button"
+                class="btn btn--primary js_calculateOverallMedian"
+              >
+                Calcular Mediana General
+              </button>
+            </div>
+
+            <div class="results" id="overallMedianResults">
+              <p class="result-message js_pResultOverallMedian"></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- TOP 10% MEDIAN -->
+        <section class="calculator-card">
+          <div class="calculator-card__header">
+            <h2 class="calculator-card__title">Mediana del Top 10%</h2>
+          </div>
+
+          <div class="calculator-card__content">
+            <div class="info-box">
+              <h3 class="info-box__title">¿Qué calcula?</h3>
+              <p class="info-box__text">
+                Calcula la mediana salarial del 10% de empleados mejor pagados.
+                Útil para entender los salarios en el segmento alto del mercado.
+              </p>
+            </div>
+
+            <div class="btn-group">
+              <button
+                type="button"
+                class="btn btn--primary js_calculateTop10Median"
+              >
+                Calcular Mediana Top 10%
+              </button>
+            </div>
+
+            <div class="results" id="top10MedianResults">
+              <p class="result-message js_pResultTop10Median"></p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <a class="footer__arrow" href="#header"
+          ><img
+            class="arrow-img"
+            src="/images/arrow-up.png"
+            alt="Volver arriba"
+        /></a>
+        <p class="footer__text">Math Lab - Análisis Salarial</p>
+      </footer>
+    </div>
+
+    <script src="../js/statistics.js"></script>
+    <script src="../js/salaries.js"></script>
+    <script src="../js/analysis.js"></script>
   </body>
 </html>

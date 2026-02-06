@@ -1,5 +1,4 @@
 "use strict";
-console.log(Statistics);
 const salaries = [];
 salaries.push({
   name: "Juanita",
@@ -220,3 +219,25 @@ salaries.push({
     { year: 2023, company: "LexCorp", salary: 3050 },
   ],
 });
+
+// Log available employees and companies
+console.group("Empleados Disponibles");
+salaries.forEach((employee) => {
+  console.log(`${employee.name} (${employee.jobs.length} registros)`);
+});
+console.groupEnd();
+
+const availableCompanies = new Set();
+salaries.forEach((employee) => {
+  employee.jobs.forEach((job) => {
+    availableCompanies.add(job.company);
+  });
+});
+
+console.group("Empresas Disponibles");
+Array.from(availableCompanies)
+  .sort()
+  .forEach((company) => {
+    console.log(company);
+  });
+console.groupEnd();

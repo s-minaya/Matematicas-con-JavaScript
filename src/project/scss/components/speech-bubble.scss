@@ -1,0 +1,185 @@
+@use "../base/variables" as v;
+
+// Wrapper
+.companion-wrapper {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin-top: v.$spacing-lg;
+}
+
+.little-friend {
+  width: 10rem;
+  min-height: 10rem;
+  background-image: url("/images/companion.gif");
+  background-size: cover;
+  background-position: center;
+  transition: transform v.$transition-fast;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.speech-bubble {
+  position: absolute;
+  left: 12rem;
+  top: 0;
+  right: 0;
+  min-width: 30rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.8) translateY(-1rem);
+  transition: all v.$transition-normal;
+  z-index: 100;
+
+  &--visible {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1) translateY(0);
+  }
+
+  &__content {
+    position: relative;
+    background: v.$color-bg-card;
+    border: 0.3rem solid v.$color-primary;
+    border-radius: v.$border-radius-md;
+    padding: v.$spacing-lg;
+    box-shadow: v.$shadow-md, 0 0 2rem rgba(0, 255, 204, 0.3);
+    min-height: 10rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: transparent;
+    border: none;
+    color: v.$color-text-secondary;
+    font-size: 2.4rem;
+    line-height: 1;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: all v.$transition-fast;
+    font-family: "Jersey 10", Courier, monospace;
+
+    &:hover {
+      color: v.$color-secondary;
+      transform: rotate(90deg);
+    }
+  }
+
+  &__text {
+    font-size: 1.4rem;
+    color: v.$color-text-primary;
+    line-height: 1.6;
+    margin: 0;
+    padding-right: 2rem;
+    font-family: "Courier New", monospace;
+
+    &::after {
+      content: '▮';
+      animation: blink 0.7s infinite;
+      color: v.$color-primary;
+      margin-left: 0.2rem;
+    }
+  }
+
+  &__arrow {
+    position: absolute;
+    left: -1.5rem;
+    top: 2rem;
+    width: 0;
+    height: 0;
+    border-top: 1rem solid transparent;
+    border-bottom: 1rem solid transparent;
+    border-right: 1.5rem solid v.$color-primary;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0.3rem;
+      top: -0.8rem;
+      width: 0;
+      height: 0;
+      border-top: 0.8rem solid transparent;
+      border-bottom: 0.8rem solid transparent;
+      border-right: 1.2rem solid v.$color-bg-card;
+    }
+  }
+}
+
+@keyframes blink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .little-friend {
+    width: 8rem;
+    min-height: 8rem;
+  }
+
+  .speech-bubble {
+    left: 9rem;
+    right: 1rem;
+    min-width: auto;
+
+    &__content {
+      padding: v.$spacing-md;
+    }
+
+    &__text {
+      font-size: 1.2rem;
+    }
+
+    &__arrow {
+      left: -1.2rem;
+
+      &::after {
+        left: 0.25rem;
+      }
+    }
+  }
+}
+
+/* Tablet */
+@media (min-width: 600px) and (max-width: 1023px) {
+  .little-friend {
+    width: 12rem;
+    min-height: 12rem;
+  }
+
+  .speech-bubble {
+    left: 14rem;
+    right: 2rem;
+  }
+}
+
+/* Laptop */
+@media (min-width: 1024px) {
+  .little-friend {
+    width: 15rem;
+    min-height: 15rem;
+  }
+
+  .speech-bubble {
+    left: 17rem;
+    right: 4rem;
+
+    &__text {
+      font-size: 1.6rem;
+    }
+  }
+}

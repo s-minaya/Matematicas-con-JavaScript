@@ -218,8 +218,10 @@ const pResultAverage = document.querySelector(".js_pResultAverage");
 const btnCalculateAverage = document.querySelector(".js_calculateAverage");
 const btnClearAverage = document.querySelector(".js_clearAverage");
 
-btnCalculateAverage.addEventListener("click", handleCalculateAverage);
-btnClearAverage.addEventListener("click", clearAverage);
+if (btnCalculateAverage && btnClearAverage) {
+  btnCalculateAverage.addEventListener("click", handleCalculateAverage);
+  btnClearAverage.addEventListener("click", clearAverage);
+}
 
 /*Parses user input and calculates the average*/
 
@@ -256,8 +258,10 @@ const pResultMedian = document.querySelector(".js_pResultMedian");
 const btnCalculateMedian = document.querySelector(".js_calculateMedian");
 const btnClearMedian = document.querySelector(".js_clearMedian");
 
-btnCalculateMedian.addEventListener("click", handleCalculateMedian);
-btnClearMedian.addEventListener("click", clearMedian);
+if (btnCalculateMedian && btnClearMedian) {
+  btnCalculateMedian.addEventListener("click", handleCalculateMedian);
+  btnClearMedian.addEventListener("click", clearMedian);
+}
 
 /*Parses user input and calculates the median*/
 
@@ -295,8 +299,10 @@ const pResultMode = document.querySelector(".js_pResultMode");
 const btnCalculateMode = document.querySelector(".js_calculateMode");
 const btnClearMode = document.querySelector(".js_clearMode");
 
-btnCalculateMode.addEventListener("click", handleCalculateMode);
-btnClearMode.addEventListener("click", clearMode);
+if (btnCalculateMode && btnClearMode) {
+  btnCalculateMode.addEventListener("click", handleCalculateMode);
+  btnClearMode.addEventListener("click", clearMode);
+}
 
 /*Parses user input and calculates the mode*/
 
@@ -334,8 +340,10 @@ const pResultWeighted = document.querySelector(".js_pResultWeighted");
 const btnCalculateWeighted = document.querySelector(".js_calculateWeighted");
 const btnClearWeighted = document.querySelector(".js_clearWeighted");
 
-btnCalculateWeighted.addEventListener("click", handleCalculateWeighted);
-btnClearWeighted.addEventListener("click", clearWeighted);
+if (btnCalculateWeighted && btnClearWeighted) {
+  btnCalculateWeighted.addEventListener("click", handleCalculateWeighted);
+  btnClearWeighted.addEventListener("click", clearWeighted);
+}
 
 /*Parses user input and calculates the weighted average*/
 
