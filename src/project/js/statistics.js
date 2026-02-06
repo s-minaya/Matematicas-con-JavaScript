@@ -34,8 +34,6 @@ Statistics.calculateAverage = function calculateAverage(list) {
   return average;
 };
 
-console.log(Statistics.calculateAverage([10, 22, 53, 14, 10000]));
-
 /* ----------------------------------
             MEDIAN
 ---------------------------------- */
@@ -44,15 +42,11 @@ console.log(Statistics.calculateAverage([10, 22, 53, 14, 10000]));
 Statistics.isEven = function isEven(list) {
   return !(list.length % 2);
 };
-console.log(Statistics.isEven([1, 2, 3, 4]));
-console.log(Statistics.isEven([10, 22, 53]));
 
 // Returns true if the list has an odd number of elements
 Statistics.isOdd = function isOdd(list) {
   return !!(list.length % 2);
 };
-console.log(Statistics.isOdd([1, 2, 3]));
-console.log(Statistics.isOdd([1, 2, 3, 4]));
 
 /**
  * Calculates the median of a list of numbers.
@@ -80,9 +74,6 @@ Statistics.calculateMedian = function calculateMedian(unsortedList) {
   } else {
     const middleIndex = Math.floor(sortedList.length / 2);
     const medianOddList = sortedList[middleIndex];
-
-    console.log(middleIndex);
-    console.log(medianOddList);
 
     return medianOddList;
   }
@@ -133,7 +124,7 @@ Statistics.calculateMode = function calculateMode(list) {
   const entriesArray = Object.entries(countMap);
 
   // Sort array by count (second element of each pair)
-  const sortedEntries = sort2DList(entriesArray, 1);
+  const sortedEntries = Statistics.sort2DList(entriesArray, 1);
 
   // Take the element with the highest count
   const maxEntry = sortedEntries[sortedEntries.length - 1];
@@ -216,4 +207,208 @@ const sumOfCredits = credits.reduce(function (sum, current) {
 // Divide the total weighted grades by the total credits
 const weightedAverage = sumOfGradesWithCredit / sumOfCredits;
 
-console.log(weightedAverage);
+/* ----------------------------------
+       UI FUNCTIONALITY
+---------------------------------- */
+
+/*---------AVERAGE UI---------*/
+
+const inputAverageList = document.querySelector(".js_averageList");
+const pResultAverage = document.querySelector(".js_pResultAverage");
+const btnCalculateAverage = document.querySelector(".js_calculateAverage");
+const btnClearAverage = document.querySelector(".js_clearAverage");
+
+btnCalculateAverage.addEventListener("click", handleCalculateAverage);
+btnClearAverage.addEventListener("click", clearAverage);
+
+/*Parses user input and calculates the average*/
+
+function handleCalculateAverage() {
+  const inputValue = inputAverageList.value.trim();
+
+  if (!inputValue) {
+    pResultAverage.innerText = "Por favor, introduce una lista de números";
+    return;
+  }
+
+  const list = parseNumberList(inputValue);
+
+  if (list.length === 0) {
+    pResultAverage.innerText = "Por favor, introduce números válidos";
+    return;
+  }
+
+  const average = Statistics.calculateAverage(list);
+  pResultAverage.innerText = `La media aritmética es: ${average.toFixed(2)}`;
+}
+
+/*Clears average form*/
+
+function clearAverage() {
+  inputAverageList.value = "";
+  pResultAverage.innerText = "";
+}
+
+/*---------MEDIAN UI---------*/
+
+const inputMedianList = document.querySelector(".js_medianList");
+const pResultMedian = document.querySelector(".js_pResultMedian");
+const btnCalculateMedian = document.querySelector(".js_calculateMedian");
+const btnClearMedian = document.querySelector(".js_clearMedian");
+
+btnCalculateMedian.addEventListener("click", handleCalculateMedian);
+btnClearMedian.addEventListener("click", clearMedian);
+
+/*Parses user input and calculates the median*/
+
+function handleCalculateMedian() {
+  const inputValue = inputMedianList.value.trim();
+
+  if (!inputValue) {
+    pResultMedian.innerText = "Por favor, introduce una lista de números";
+    return;
+  }
+
+  const list = parseNumberList(inputValue);
+
+  if (list.length === 0) {
+    pResultMedian.innerText = "Por favor, introduce números válidos";
+    return;
+  }
+
+  const median = Statistics.calculateMedian(list);
+  const sortedList = Statistics.sortList([...list]);
+  pResultMedian.innerText = `La mediana es: ${median} (Lista ordenada: ${sortedList.join(", ")})`;
+}
+
+/*Clears median form*/
+
+function clearMedian() {
+  inputMedianList.value = "";
+  pResultMedian.innerText = "";
+}
+
+/*---------MODE UI---------*/
+
+const inputModeList = document.querySelector(".js_modeList");
+const pResultMode = document.querySelector(".js_pResultMode");
+const btnCalculateMode = document.querySelector(".js_calculateMode");
+const btnClearMode = document.querySelector(".js_clearMode");
+
+btnCalculateMode.addEventListener("click", handleCalculateMode);
+btnClearMode.addEventListener("click", clearMode);
+
+/*Parses user input and calculates the mode*/
+
+function handleCalculateMode() {
+  const inputValue = inputModeList.value.trim();
+
+  if (!inputValue) {
+    pResultMode.innerText = "Por favor, introduce una lista de números";
+    return;
+  }
+
+  const list = parseNumberList(inputValue);
+
+  if (list.length === 0) {
+    pResultMode.innerText = "Por favor, introduce números válidos";
+    return;
+  }
+
+  const mode = Statistics.calculateMode(list);
+  pResultMode.innerText = `La moda es: ${mode}`;
+}
+
+/*Clears mode form*/
+
+function clearMode() {
+  inputModeList.value = "";
+  pResultMode.innerText = "";
+}
+
+/*---------WEIGHTED AVERAGE UI---------*/
+
+const inputWeightedValues = document.querySelector(".js_weightedValues");
+const inputWeightedWeights = document.querySelector(".js_weightedWeights");
+const pResultWeighted = document.querySelector(".js_pResultWeighted");
+const btnCalculateWeighted = document.querySelector(".js_calculateWeighted");
+const btnClearWeighted = document.querySelector(".js_clearWeighted");
+
+btnCalculateWeighted.addEventListener("click", handleCalculateWeighted);
+btnClearWeighted.addEventListener("click", clearWeighted);
+
+/*Parses user input and calculates the weighted average*/
+
+function handleCalculateWeighted() {
+  const valuesInput = inputWeightedValues.value.trim();
+  const weightsInput = inputWeightedWeights.value.trim();
+
+  if (!valuesInput || !weightsInput) {
+    pResultWeighted.innerText = "Por favor, rellena ambos campos";
+    return;
+  }
+
+  const values = parseNumberList(valuesInput);
+  const weights = parseNumberList(weightsInput);
+
+  if (values.length === 0 || weights.length === 0) {
+    pResultWeighted.innerText = "Por favor, introduce números válidos";
+    return;
+  }
+
+  if (values.length !== weights.length) {
+    pResultWeighted.innerText =
+      "Los valores y pesos deben tener la misma cantidad de elementos";
+    return;
+  }
+
+  // Calculate weighted average
+  const valuesWithWeights = values.map(function (value, index) {
+    return value * weights[index];
+  });
+
+  const sumOfValuesWithWeights = valuesWithWeights.reduce(function (
+    sum,
+    current,
+  ) {
+    return sum + current;
+  }, 0);
+
+  const sumOfWeights = weights.reduce(function (sum, current) {
+    return sum + current;
+  }, 0);
+
+  const weightedAvg = sumOfValuesWithWeights / sumOfWeights;
+
+  pResultWeighted.innerText = `La media ponderada es: ${weightedAvg.toFixed(2)}`;
+}
+
+/*Clears weighted average form*/
+
+function clearWeighted() {
+  inputWeightedValues.value = "";
+  inputWeightedWeights.value = "";
+  pResultWeighted.innerText = "";
+}
+
+/*---------HELPER FUNCTIONS---------*/
+
+/**
+ * Parses a comma-separated string into an array of numbers
+ * Example: "10, 22, 53" -> [10, 22, 53]
+ */
+function parseNumberList(inputString) {
+  const stringArray = inputString.split(",");
+  const numberArray = [];
+
+  for (let i = 0; i < stringArray.length; i++) {
+    const trimmedString = stringArray[i].trim();
+    const number = Number(trimmedString);
+
+    if (!isNaN(number) && trimmedString !== "") {
+      numberArray.push(number);
+    }
+  }
+
+  return numberArray;
+}
