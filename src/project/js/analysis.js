@@ -2,7 +2,7 @@
 
 // Import dependencies
 import { salaries as importedSalaries } from "./salaries.js";
-import { Statistics } from "./statistics.js";
+import { Statistics, parseNumberList } from "./statistics.js";
 
 // Make salaries available in this module
 let salaries = importedSalaries;
@@ -307,14 +307,14 @@ function handleAddEmployee() {
   // Save employees to localStorage
   localStorage.setItem("mathlab_salaries", JSON.stringify(salaries));
 
-  // Rebuild the companies object
-  companies = rebuildCompanies();
+  // Invalidate companies cache so it rebuilds on next access
+  _companies = null;
 
   pResultAddEmployee.innerText = `¡Empleado ${name} añadido con ${jobs.length} registros!`;
 
   // Log updated data
   console.log("Empleado añadido:", salaries[salaries.length - 1]);
-  console.log("Empresas actualizadas:", companies);
+  console.log("Empresas actualizadas:", getCompanies());
 }
 
 /*Clears add employee form*/
@@ -448,6 +448,7 @@ function handleCompanyMedian() {
     return;
   }
 
+  const companies = getCompanies();
   if (!companies[companyName]) {
     pResultCompanyMedian.innerText = `La empresa ${companyName} no existe`;
     return;
@@ -499,6 +500,7 @@ function handleCompanyProjection() {
     return;
   }
 
+  const companies = getCompanies();
   if (!companies[companyName]) {
     pResultCompanyProjection.innerText = `La empresa ${companyName} no existe`;
     return;

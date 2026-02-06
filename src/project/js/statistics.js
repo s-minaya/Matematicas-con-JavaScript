@@ -422,4 +422,4 @@ function parseNumberList(inputString) {
 }
 
 // Export para que otros módulos puedan importar
-export { Statistics };
+export { Statistics, parseNumberList };
