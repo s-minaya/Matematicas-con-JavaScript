@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const messages = [
     "¡Nyan~! (づ｡◕‿‿◕｡)づ Bienvenido a MATHLAB, mi pequeño taller matemágico, donde los humanos creen que aprender matemáticas puede ser divertido....",
-    "¡Hola! ＼(●~▽~●) Soy tu compañero pixelado, aunque no esperes demasiada compañía… estoy demasiado ocupado observando tus errores. Aquí podrás explorar geometría, porcentajes, estadística y análisis salarial, si eso te hace feliz. Diviértete aprendiendo… o al menos finge que te importa mientras yo miro.",
+    "¡Hola! ＼(●~▽~●) Soy tu compañero pixelado, aunque no esperes demasiada compañía… estoy demasiado ocupado observando cómo sufres con JavaScript. Aquí podrás explorar geometría, porcentajes, estadística y análisis salarial, si eso te hace feliz. Diviértete aprendiendo… o al menos fíngelo.",
     "¿Sabías que las matemágicas están en todas partes? ¡No te preocupes! Este proyecto te ayudará a entenderlas mejor, mientras juegas un poquito con la programación. ≖‿≖",
   ];
 

@@ -92,6 +92,9 @@ function createCustomCoupon() {
     discount: couponDiscount,
   });
 
+  // Save coupons to localStorage
+  localStorage.setItem("mathlab_coupons", JSON.stringify(couponsList));
+
   pResultCreateCoupon.innerText = `¡Cupón ${couponName} creado! Descuento: ${couponDiscount}%`;
 
   // Log updated coupons list to console
@@ -130,19 +133,25 @@ btnClearCoupon.addEventListener("click", clearCoupon);
 //   SOFI_DEV: 75,
 // };
 
-const couponsList = [];
-couponsList.push({
-  name: "MINAYADEAL",
-  discount: 30,
-});
-couponsList.push({
-  name: "MINAYA_POWER",
-  discount: 50,
-});
-couponsList.push({
-  name: "SOFI_DEV",
-  discount: 75,
-});
+// Load coupons from localStorage or use default coupons
+const defaultCoupons = [
+  { name: "MINAYADEAL", discount: 30 },
+  { name: "MINAYA_POWER", discount: 50 },
+  { name: "SOFI_DEV", discount: 75 },
+];
+
+let couponsList = [];
+
+// Try to load coupons from localStorage
+const savedCoupons = localStorage.getItem("mathlab_coupons");
+if (savedCoupons) {
+  couponsList = JSON.parse(savedCoupons);
+} else {
+  // If there are no saved coupons, use the default ones
+  couponsList = [...defaultCoupons];
+  localStorage.setItem("mathlab_coupons", JSON.stringify(couponsList));
+}
+
 console.group("Cupones Disponibles");
 couponsList.forEach((coupon) => {
   console.log(`${coupon.name} → ${coupon.discount}%`);

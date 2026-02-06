@@ -30,7 +30,7 @@ function medianByEmployee(employeeName) {
 function getEmployeeSalaryProjection(employeeName) {
   const jobs = findEmployee(employeeName).jobs;
 
-  // Si solo hay un registro de salario, no se puede calcular proyección
+  // If there is only one salary record, projection cannot be calculated
   if (jobs.length < 2) {
     console.warn(
       "Se necesitan al menos 2 registros de salario para calcular la proyección",
@@ -68,21 +68,29 @@ function getEmployeeSalaryProjection(employeeName) {
  * 4. Push the job's salary into the corresponding company and year array.
  */
 
-const companies = {};
+// Function to rebuild the companies object from the salaries array
+function rebuildCompanies() {
+  const companies = {};
 
-for (const employee of salaries) {
-  for (const job of employee.jobs) {
-    if (!companies[job.company]) {
-      companies[job.company] = {};
+  for (const employee of salaries) {
+    for (const job of employee.jobs) {
+      if (!companies[job.company]) {
+        companies[job.company] = {};
+      }
+
+      if (!companies[job.company][job.year]) {
+        companies[job.company][job.year] = [];
+      }
+
+      companies[job.company][job.year].push(job.salary);
     }
-
-    if (!companies[job.company][job.year]) {
-      companies[job.company][job.year] = [];
-    }
-
-    companies[job.company][job.year].push(job.salary);
   }
+
+  return companies;
 }
+
+// Initialize companies from salaries
+let companies = rebuildCompanies();
 
 console.log(companies);
 
@@ -115,7 +123,7 @@ function getCompanySalaryProjection(name) {
   } else {
     const companyYears = Object.keys(companies[name]);
 
-    // Si solo hay un año de datos, no se puede calcular proyección
+    // If there is only one year of data, projection cannot be calculated
     if (companyYears.length < 2) {
       console.warn(
         "Se necesitan al menos 2 años de datos para calcular la proyección",
@@ -280,18 +288,11 @@ function handleAddEmployee() {
     jobs: jobs,
   });
 
-  // Update companies object
-  for (const job of jobs) {
-    if (!companies[job.company]) {
-      companies[job.company] = {};
-    }
+  // Save employees to localStorage
+  localStorage.setItem("mathlab_salaries", JSON.stringify(salaries));
 
-    if (!companies[job.company][job.year]) {
-      companies[job.company][job.year] = [];
-    }
-
-    companies[job.company][job.year].push(job.salary);
-  }
+  // Rebuild the companies object
+  companies = rebuildCompanies();
 
   pResultAddEmployee.innerText = `¡Empleado ${name} añadido con ${jobs.length} registros!`;
 
