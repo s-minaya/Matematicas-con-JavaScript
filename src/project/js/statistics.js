@@ -405,7 +405,7 @@ function clearWeighted() {
  * Parses a comma-separated string into an array of numbers
  * Example: "10, 22, 53" -> [10, 22, 53]
  */
-function parseNumberList(inputString) {
+Statistics.parseNumberList = function parseNumberList(inputString) {
   const stringArray = inputString.split(",");
   const numberArray = [];
 
@@ -419,7 +419,7 @@ function parseNumberList(inputString) {
   }
 
   return numberArray;
-}
+};
 
 // Export para que otros módulos puedan importar
-export { Statistics, parseNumberList };
+export { Statistics };

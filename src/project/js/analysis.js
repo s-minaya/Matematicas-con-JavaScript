@@ -2,7 +2,7 @@
 
 // Import dependencies
 import { salaries as importedSalaries } from "./salaries.js";
-import { Statistics, parseNumberList } from "./statistics.js";
+import { Statistics } from "./statistics.js";
 
 // Make salaries available in this module
 let salaries = importedSalaries;
@@ -226,9 +226,9 @@ function handleAddEmployee() {
     return;
   }
 
-  const years = parseNumberList(yearsInput);
+  const years = Statistics.parseNumberList(yearsInput);
   const companiesArray = companiesInput.split(",").map((c) => c.trim());
-  const salariesArray = parseNumberList(salariesInput);
+  const salariesArray = Statistics.parseNumberList(salariesInput);
 
   if (
     years.length === 0 ||
