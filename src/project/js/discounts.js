@@ -47,6 +47,70 @@ function clearPercent() {
   pResultPercent.innerText = "";
 }
 
+/*---------CREATE CUSTOM COUPON---------*/
+
+const btnCreateCoupon = document.querySelector(".js_createCoupon");
+const inputCouponName = document.querySelector(".js_couponName");
+const inputCouponDiscount = document.querySelector(".js_couponDiscount");
+const pResultCreateCoupon = document.querySelector(".js_pResultCreateCoupon");
+const btnClearCreateCoupon = document.querySelector(".js_clearCreateCoupon");
+
+btnCreateCoupon.addEventListener("click", createCustomCoupon);
+btnClearCreateCoupon.addEventListener("click", clearCreateCoupon);
+
+/*Creates a new custom coupon and adds it to the coupons list*/
+
+function createCustomCoupon() {
+  const couponName = inputCouponName.value.trim().toUpperCase();
+  const couponDiscount = Number(inputCouponDiscount.value);
+
+  if (!couponName || !couponDiscount) {
+    pResultCreateCoupon.innerText = "Por favor, rellena el formulario";
+    return;
+  }
+
+  if (couponDiscount < 1 || couponDiscount > 100) {
+    pResultCreateCoupon.innerText = "El descuento debe estar entre 1 y 100";
+    return;
+  }
+
+  // Check if coupon already exists
+  function isCouponInArray(couponElement) {
+    return couponElement.name === couponName;
+  }
+
+  const existingCoupon = couponsList.find(isCouponInArray);
+
+  if (existingCoupon) {
+    pResultCreateCoupon.innerText = `El cupón ${couponName} ya existe con ${existingCoupon.discount}% de descuento`;
+    return;
+  }
+
+  // Add new coupon to the list
+  couponsList.push({
+    name: couponName,
+    discount: couponDiscount,
+  });
+
+  pResultCreateCoupon.innerText = `¡Cupón ${couponName} creado! Descuento: ${couponDiscount}%`;
+
+  // Log updated coupons list to console
+  console.clear();
+  console.group("Cupones Disponibles");
+  couponsList.forEach((coupon) => {
+    console.log(`${coupon.name} → ${coupon.discount}%`);
+  });
+  console.groupEnd();
+}
+
+/*Clears create coupon form fields and result message*/
+
+function clearCreateCoupon() {
+  inputCouponName.value = "";
+  inputCouponDiscount.value = "";
+  pResultCreateCoupon.innerText = "";
+}
+
 /*---------COUPON---------*/
 
 const btnCoupon = document.querySelector(".js_calculateCoupon");

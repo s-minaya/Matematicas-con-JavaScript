@@ -1,7 +1,12 @@
 @use "../base/variables" as v;
+.btn-group {
+  display: flex;              
+  justify-content: center;    
+  gap: v.$spacing-md;         
+  flex-wrap: wrap;            
+}
 
 .btn {
-  display: inline-block;
   padding: v.$spacing-md v.$spacing-lg;
   font-size: 2rem;
   font-weight: bold;
@@ -12,6 +17,7 @@
   border: 0.2rem solid transparent;
   font-family: "Jersey 10", Courier, monospace;
   min-width: 30rem;
+  max-width: 50rem;
 }
 
 .btn--primary {

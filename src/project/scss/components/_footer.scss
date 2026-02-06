@@ -3,7 +3,6 @@
 .footer {
   margin-top: v.$spacing-xl;
   padding-top: v.$spacing-md;
-  border-top: 0.2rem solid v.$color-border;
   text-align: center;
   position: relative;
   padding-bottom: v.$spacing-md;
@@ -16,7 +15,9 @@
   }
 
   &__arrow {
+    position: absolute;
     display: inline-block;
+    top: -2.5rem;
     margin-bottom: v.$spacing-md;
     transition: all v.$transition-fast;
     animation: bounce 1.8s infinite ease-in-out;
@@ -73,7 +74,6 @@
   }
 }
 @keyframes bounce {
-
   0%,
   100% {
     transform: translateY(0);

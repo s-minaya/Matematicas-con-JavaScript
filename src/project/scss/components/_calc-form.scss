@@ -40,6 +40,16 @@
   }
 }
 
+.btn-group {
+  display: flex;
+  gap: v.$spacing-md;
+  margin-top: v.$spacing-md;
+
+  .btn {
+    flex: 1;
+  }
+}
+
 /* Tablet */
 @media (min-width: 600px) {
   .calc-form {
@@ -48,7 +58,7 @@
     gap: v.$spacing-md;
   }
 
-  .calc-form .btn {
+  .calc-form .btn-group {
     grid-column: 1 / -1;
   }
 }

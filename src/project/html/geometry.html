@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/project/scss/main.scss" />
     <link rel="icon" href="/images/favicon.png" />
   </head>
+
   <body style="scroll-behavior: smooth">
     <div class="page-wrapper">
       <header class="header" id="header">
@@ -74,8 +75,10 @@
                   required
                 />
               </div>
-              <button type="submit" class="btn btn--primary">Calcular</button>
-              <button type="reset" class="btn btn--reset">Reiniciar</button>
+              <div class="btn-group">
+                <button type="submit" class="btn btn--primary">Calcular</button>
+                <button type="reset" class="btn btn--reset">Reiniciar</button>
+              </div>
             </form>
 
             <div class="results" id="squareResults"></div>
@@ -109,6 +112,13 @@
                   >
                 </div>
               </div>
+            </div>
+
+            <div class="info-box">
+              <p class="info-box__text">
+                Introduce la longitud de los lados en centímetros para calcular
+                el perímetro y el área.
+              </p>
             </div>
 
             <form class="calc-form" id="triangleForm">
@@ -168,8 +178,11 @@
                   required
                 />
               </div>
-              <button type="submit" class="btn btn--primary">Calcular</button>
-              <button type="reset" class="btn btn--reset">Reiniciar</button>
+
+              <div class="btn-group">
+                <button type="submit" class="btn btn--primary">Calcular</button>
+                <button type="reset" class="btn btn--reset">Reiniciar</button>
+              </div>
             </form>
 
             <div class="results" id="triangleResults"></div>
@@ -228,10 +241,13 @@
                   required
                 />
               </div>
-              <button type="submit" class="btn btn--primary">
-                Calcular Altura
-              </button>
-              <button type="reset" class="btn btn--reset">Reiniciar</button>
+
+              <div class="btn-group">
+                <button type="submit" class="btn btn--primary">
+                  Calcular Altura
+                </button>
+                <button type="reset" class="btn btn--reset">Reiniciar</button>
+              </div>
             </form>
 
             <div class="results" id="isoscelesResults"></div>
@@ -326,10 +342,13 @@
                   required
                 />
               </div>
-              <button type="submit" class="btn btn--primary">
-                Calcular Altura
-              </button>
-              <button type="reset" class="btn btn--reset">Reiniciar</button>
+
+              <div class="btn-group">
+                <button type="submit" class="btn btn--primary">
+                  Calcular Altura
+                </button>
+                <button type="reset" class="btn btn--reset">Reiniciar</button>
+              </div>
             </form>
 
             <div class="results" id="scaleneResults"></div>
@@ -365,6 +384,13 @@
               </div>
             </div>
 
+            <div class="info-box">
+              <p class="info-box__text">
+                Introduce el radio del círculo para calcular la circunferencia y
+                el área.
+              </p>
+            </div>
+
             <form class="calc-form" id="circleForm">
               <div class="input-group">
                 <label for="circleRadius" class="input-group__label">
@@ -380,8 +406,11 @@
                   required
                 />
               </div>
-              <button type="submit" class="btn btn--primary">Calcular</button>
-              <button type="reset" class="btn btn--reset">Reiniciar</button>
+
+              <div class="btn-group">
+                <button type="submit" class="btn btn--primary">Calcular</button>
+                <button type="reset" class="btn btn--reset">Reiniciar</button>
+              </div>
             </form>
 
             <div class="results" id="circleResults"></div>
