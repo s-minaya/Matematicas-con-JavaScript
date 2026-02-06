@@ -16,11 +16,11 @@ function findEmployee(employeeToFind) {
 function medianByEmployee(employeeName) {
   const jobs = findEmployee(employeeName).jobs;
 
-  const salaries = jobs.map(function (element) {
+  const employeeSalaries = jobs.map(function (element) {
     return element.salary;
   });
 
-  const medianSalaries = Statistics.calculateMedian(salaries);
+  const medianSalaries = Statistics.calculateMedian(employeeSalaries);
 
   return medianSalaries;
 }
@@ -96,12 +96,20 @@ function rebuildCompanies() {
   return companies;
 }
 
-// Initialize companies from salaries
-let companies = rebuildCompanies();
+// Lazy getter for companies - rebuild on demand
+let _companies = null;
+function getCompanies() {
+  if (!_companies || Object.keys(_companies).length === 0) {
+    _companies = rebuildCompanies();
+  }
+  return _companies;
+}
 
-console.log(companies);
+// Initialize companies from salaries
+console.log(getCompanies());
 
 function getMedianSalaryByCompanyAndYear(name, year) {
+  const companies = getCompanies();
   if (!companies[name]) {
     console.warn("La empresa no existe");
     return;
@@ -124,6 +132,7 @@ function getMedianSalaryByCompanyAndYear(name, year) {
  */
 
 function getCompanySalaryProjection(name) {
+  const companies = getCompanies();
   if (!companies[name]) {
     console.warn("La empresa no existe");
     return null;
