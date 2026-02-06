@@ -28,11 +28,11 @@ const htmlFilesList = Object.fromEntries(
 
 const inputFilesList = {
   ...htmlFilesList,
-  'geometry': 'src/project/js/geometry.js',
-  'statistics': 'src/project/js/statistics.js',
-  'discounts': 'src/project/js/discounts.js',
-  'salaries': 'src/project/js/salaries.js',
-  'analysis': 'src/project/js/analysis.js',
+  geometry: "src/project/js/geometry.js",
+  statistics: "src/project/js/statistics.js",
+  discounts: "src/project/js/discounts.js",
+  salaries: "src/project/js/salaries.js",
+  analysis: "src/project/js/analysis.js",
 };
 
 export default defineConfig({
@@ -52,7 +52,15 @@ export default defineConfig({
             return "js/main.js";
           }
           // Scripts específicos de cada página
-          if (['geometry', 'statistics', 'discounts', 'salaries', 'analysis'].includes(name)) {
+          if (
+            [
+              "geometry",
+              "statistics",
+              "discounts",
+              "salaries",
+              "analysis",
+            ].includes(name)
+          ) {
             return `project/js/${name}.js`;
           }
           // default value
