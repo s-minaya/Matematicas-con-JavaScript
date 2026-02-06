@@ -13,7 +13,7 @@ import { fileURLToPath } from "node:url";
 
 // Get all html files
 const htmlFilesList = Object.fromEntries(
-  FastGlob.sync("src/*.html").map((file) => [
+  FastGlob.sync("src/**/*.html").map((file) => [
     // This remove `src/` as well as the file extension from each
     // file, so e.g. src/nested/foo.js becomes nested/foo
     path.relative(
@@ -28,10 +28,15 @@ const htmlFilesList = Object.fromEntries(
 
 const inputFilesList = {
   ...htmlFilesList,
+  'geometry': 'src/project/js/geometry.js',
+  'statistics': 'src/project/js/statistics.js',
+  'discounts': 'src/project/js/discounts.js',
+  'salaries': 'src/project/js/salaries.js',
+  'analysis': 'src/project/js/analysis.js',
 };
 
 export default defineConfig({
-  base: "./",
+  base: "/Matematicas-con-JavaScript/",
   root: "src",
   publicDir: "../public",
   build: {
@@ -45,6 +50,10 @@ export default defineConfig({
         entryFileNames: ({ name }) => {
           if (name === "main") {
             return "js/main.js";
+          }
+          // Scripts específicos de cada página
+          if (['geometry', 'statistics', 'discounts', 'salaries', 'analysis'].includes(name)) {
+            return `project/js/${name}.js`;
           }
           // default value
           // ref: https://rollupjs.org/configuration-options/#output-entryfilenames
