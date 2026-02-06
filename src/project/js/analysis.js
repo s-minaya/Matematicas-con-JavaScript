@@ -548,23 +548,3 @@ function handleTop10Median() {
 }
 
 /*---------HELPER FUNCTIONS---------*/
-
-/**
- * Parses a comma-separated string into an array of numbers
- * Example: "2020, 2021, 2022" -> [2020, 2021, 2022]
- */
-function parseNumberList(inputString) {
-  const stringArray = inputString.split(",");
-  const numberArray = [];
-
-  for (let i = 0; i < stringArray.length; i++) {
-    const trimmedString = stringArray[i].trim();
-    const number = Number(trimmedString);
-
-    if (!isNaN(number) && trimmedString !== "") {
-      numberArray.push(number);
-    }
-  }
-
-  return numberArray;
-}
