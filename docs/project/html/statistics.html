@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estadística Básica - Math Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="/Matematicas-con-JavaScript/images/favicon.png" />
+    <link rel="stylesheet" crossorigin href="/Matematicas-con-JavaScript/assets/main-DBjOQbtG.css">
+  </head>
+
+  <body style="scroll-behavior: smooth">
+    <div class="page-wrapper">
+      <header class="header" id="header">
+        <h1 class="header__title">
+          <span class="header__title-math">MATH</span>
+          <span class="header__title-lab">LAB</span>
+        </h1>
+        <p class="header__subtitle">Estadística Básica</p>
+      </header>
+
+      <nav class="breadcrumb">
+        <a href="../../index.html" class="breadcrumb__link">← Volver al menú</a>
+      </nav>
+
+      <main class="main">
+        <!-- AVERAGE -->
+        <section class="calculator-card">
+          <div class="calculator-card__header">
+            <h2 class="calculator-card__title">Media Aritmética</h2>
+          </div>
+
+          <div class="calculator-card__content">
+            <div class="info-box">
+              <h3 class="info-box__title">¿Qué es la media?</h3>
+              <p class="info-box__text">
+                La media aritmética es la suma de todos los valores dividida
+                entre el número total de valores. Es útil para obtener un valor
+                representativo de un conjunto de datos.
+              </p>
+              <div class="formula-group">
+                <div class="formula">
+                  <span class="formula__label">Fórmula:</span>
+                  <span class="formula__expression">Media = Σ valores / n</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="info-box">
+              <p class="info-box__text">
+                Introduce los números separados por comas. Por ejemplo: 10, 22,
+                53, 14, 100
+              </p>
+            </div>
+
+            <form class="calc-form" id="averageForm">
+              <div class="input-group">
+                <label for="average-list" class="input-group__label">
+                  Lista de números
+                </label>
+                <input
+                  type="text"
+                  id="average-list"
+                  class="input-group__field js_averageList"
+                  placeholder="Ej: 10, 22, 53, 14, 100"
+                  required
+                />
+              </div>
+              <div class="btn-group">
+                <button
+                  type="button"
+                  class="btn btn--primary js_calculateAverage"
+                >
+                  Calcular Media
+                </button>
+                <button type="button" class="btn btn--reset js_clearAverage">
+                  Reiniciar
+                </button>
+              </div>
+            </form>
+
+            <div class="results" id="averageResults">
+              <p class="result-message js_pResultAverage"></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- MEDIAN -->
+        <section class="calculator-card">
+          <div class="calculator-card__header">
+            <h2 class="calculator-card__title">Mediana</h2>
+          </div>
+
+          <div class="calculator-card__content">
+            <div class="info-box">
+              <h3 class="info-box__title">¿Qué es la mediana?</h3>
+              <p class="info-box__text">
+                La mediana es el valor central de un conjunto de datos
+                ordenados. Si hay un número par de valores, es el promedio de
+                los dos valores centrales.
+              </p>
+              <div class="formula-group">
+                <div class="formula">
+                  <span class="formula__label">Lista impar:</span>
+                  <span class="formula__expression">Valor central</span>
+                </div>
+                <div class="formula">
+                  <span class="formula__label">Lista par:</span>
+                  <span class="formula__expression"
+                    >Promedio de valores centrales</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="info-box">
+              <p class="info-box__text">
+                Introduce los números separados por comas. La lista se ordenará
+                automáticamente.
+              </p>
+            </div>
+
+            <form class="calc-form" id="medianForm">
+              <div class="input-group">
+                <label for="median-list" class="input-group__label">
+                  Lista de números
+                </label>
+                <input
+                  type="text"
+                  id="median-list"
+                  class="input-group__field js_medianList"
+                  placeholder="Ej: 5, 2, 8, 1, 9"
+                  required
+                />
+              </div>
+              <div class="btn-group">
+                <button
+                  type="button"
+                  class="btn btn--primary js_calculateMedian"
+                >
+                  Calcular Mediana
+                </button>
+                <button type="button" class="btn btn--reset js_clearMedian">
+                  Reiniciar
+                </button>
+              </div>
+            </form>
+
+            <div class="results" id="medianResults">
+              <p class="result-message js_pResultMedian"></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- MODE -->
+        <section class="calculator-card">
+          <div class="calculator-card__header">
+            <h2 class="calculator-card__title">Moda</h2>
+          </div>
+
+          <div class="calculator-card__content">
+            <div class="info-box">
+              <h3 class="info-box__title">¿Qué es la moda?</h3>
+              <p class="info-box__text">
+                La moda es el valor que aparece con mayor frecuencia en un
+                conjunto de datos. Es útil para identificar el valor más común.
+              </p>
+              <div class="formula-group">
+                <div class="formula">
+                  <span class="formula__label">Definición:</span>
+                  <span class="formula__expression">Valor más repetido</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="info-box">
+              <p class="info-box__text">
+                Introduce los números separados por comas. Puedes repetir
+                valores.
+              </p>
+            </div>
+
+            <form class="calc-form" id="modeForm">
+              <div class="input-group">
+                <label for="mode-list" class="input-group__label">
+                  Lista de números
+                </label>
+                <input
+                  type="text"
+                  id="mode-list"
+                  class="input-group__field js_modeList"
+                  placeholder="Ej: 5, 2, 5, 8, 2, 5"
+                  required
+                />
+              </div>
+              <div class="btn-group">
+                <button type="button" class="btn btn--primary js_calculateMode">
+                  Calcular Moda
+                </button>
+                <button type="button" class="btn btn--reset js_clearMode">
+                  Reiniciar
+                </button>
+              </div>
+            </form>
+
+            <div class="results" id="modeResults">
+              <p class="result-message js_pResultMode"></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- WEIGHTED AVERAGE -->
+        <section class="calculator-card">
+          <div class="calculator-card__header">
+            <h2 class="calculator-card__title">Media Ponderada</h2>
+          </div>
+
+          <div class="calculator-card__content">
+            <div class="info-box">
+              <h3 class="info-box__title">¿Qué es la media ponderada?</h3>
+              <p class="info-box__text">
+                La media ponderada asigna un peso o importancia diferente a cada
+                valor. Es útil para calcular notas finales con diferentes
+                porcentajes.
+              </p>
+              <div class="formula-group">
+                <div class="formula">
+                  <span class="formula__label">Fórmula:</span>
+                  <span class="formula__expression"
+                    >Σ(valor × peso) / Σ pesos</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="info-box">
+              <p class="info-box__text">
+                Introduce valores y pesos separados por comas. Ejemplo: Valores:
+                8, 7, 10 | Pesos: 5, 5, 2
+              </p>
+            </div>
+
+            <form class="calc-form" id="weightedForm">
+              <div class="input-group">
+                <label for="weighted-values" class="input-group__label">
+                  Valores (notas, puntuaciones...)
+                </label>
+                <input
+                  type="text"
+                  id="weighted-values"
+                  class="input-group__field js_weightedValues"
+                  placeholder="Ej: 8, 7, 10"
+                  required
+                />
+              </div>
+              <div class="input-group">
+                <label for="weighted-weights" class="input-group__label">
+                  Pesos (créditos, porcentajes...)
+                </label>
+                <input
+                  type="text"
+                  id="weighted-weights"
+                  class="input-group__field js_weightedWeights"
+                  placeholder="Ej: 5, 5, 2"
+                  required
+                />
+              </div>
+              <div class="btn-group">
+                <button
+                  type="button"
+                  class="btn btn--primary js_calculateWeighted"
+                >
+                  Calcular Media Ponderada
+                </button>
+                <button type="button" class="btn btn--reset js_clearWeighted">
+                  Reiniciar
+                </button>
+              </div>
+            </form>
+
+            <div class="results" id="weightedResults">
+              <p class="result-message js_pResultWeighted"></p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <a class="footer__arrow" href="#header"
+          ><img
+            class="arrow-img"
+            src="/Matematicas-con-JavaScript/images/arrow-up.png"
+            alt="Volver arriba"
+        /></a>
+        <p class="footer__text">Math Lab - Estadística Básica</p>
+      </footer>
+    </div>
+
+    <script src="../js/statistics.js"></script>
+  </body>
+</html>
